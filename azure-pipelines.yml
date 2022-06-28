@@ -16,10 +16,11 @@ steps:
   inputs:
     terraformVersion: 'latest'
 - task: TerraformTaskV3@3
-  displayName: "terraform init"
+  displayName: "Terraform init"
   inputs:
     provider: 'azurerm'
     command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform'
     backendServiceArm: 'TerraformService'
     backendAzureRmResourceGroupName: 'TerraformRG'
     backendAzureRmStorageAccountName: 'terraformstoreage'
@@ -30,15 +31,18 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'validate'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/Terrafrom'
 - task: TerraformTaskV3@3
   displayName: "terraform plan"
   inputs:
     provider: 'azurerm'
     command: 'plan'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform'
     environmentServiceNameAzureRM: 'TerraformService'
 - task: TerraformTaskV3@3
   displayName: "terraform apply"
   inputs:
     provider: 'azurerm'
     command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform'
     environmentServiceNameAzureRM: 'TerraformService'
