@@ -20,7 +20,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/Folder'
     backendServiceArm: 'TerraformService'
     backendAzureRmResourceGroupName: 'TerraformRG'
     backendAzureRmStorageAccountName: 'terraformstoreage'
@@ -31,18 +31,18 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'validate'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/Terrafrom'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/Folder'
 - task: TerraformTaskV3@3
   displayName: "terraform plan"
   inputs:
     provider: 'azurerm'
     command: 'plan'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/Folder'
     environmentServiceNameAzureRM: 'TerraformService'
 - task: TerraformTaskV3@3
   displayName: "terraform apply"
   inputs:
     provider: 'azurerm'
     command: 'apply'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/Folder'
     environmentServiceNameAzureRM: 'TerraformService'
